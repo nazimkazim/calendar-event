@@ -3,11 +3,13 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { RouteNames } from '../routes/index';
+import { useActions } from '../hooks/useActions';
 
 
 const NavBar: FC = () => {
   const router = useHistory();
-  const {isAuth} = useTypedSelector(state => state.auth)
+  const { isAuth, user } = useTypedSelector(state => state.auth)
+  const { logout } = useActions()
   return (
     <Layout.Header>
       <Row justify="end">
@@ -15,10 +17,10 @@ const NavBar: FC = () => {
           isAuth
             ?
             <>
-              <div style={{ color: 'white' }}>Ulbi TV</div>
+              <div style={{ color: 'white' }}>{user.username}</div>
               <Menu theme="dark" mode="horizontal" selectable={false}>
                 <Menu.Item
-                  onClick={() => console.log('выйти')}
+                  onClick={() => logout()}
                   key={1}
                 >Выйти
                 </Menu.Item>

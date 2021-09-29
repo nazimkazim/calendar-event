@@ -1,6 +1,10 @@
 {
   "cSpell.words": [
+    "Пожалуйста",
     "Работает",
     "antd"
+  ],
+  "cSpell.enableFiletypes": [
+    "typescript"
   ]
 }
